@@ -17,7 +17,7 @@ namespace ISM6225_Spring_2024_Assignment_2
             //Question 1:
             Console.WriteLine("Question 1:");
             int[] nums1 = { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
-            int numberOfUniqueNumbers = RemoveDuplicates(nums1);
+            int numberOfUniqueNumbers = RemoveDuplicates(nums1);    
             Console.WriteLine(numberOfUniqueNumbers);
 
             //Question 2:
@@ -99,8 +99,23 @@ namespace ISM6225_Spring_2024_Assignment_2
         {
             try
             {
+
                 // Write your code here and you can modify the return value according to the requirements
-                return 0;
+                if (nums.Length == 0)
+                {
+                    return 0;
+                }
+                int k = 1;
+                for (int i = 1; i < nums.Length; i++)
+                {
+                    if (nums[i] != nums[i - 1])
+                    {
+                        nums[k] = nums[i];
+                        k++;
+                    }
+                    
+                }
+                return k;
             }
             catch (Exception)
             {
@@ -134,8 +149,19 @@ namespace ISM6225_Spring_2024_Assignment_2
         {
             try
             {
-                // Write your code here and you can modify the return value according to the requirements
-                return new List<int>();
+                int lastid = 0; 
+                for (int i = 0; i < nums.Length; i++)
+                {
+                    if (nums[i] != 0)
+                    {
+                        nums[lastid++] = nums[i];
+                    }
+                }
+                for (int i = lastid; i < nums.Length; i++)
+                {
+                    nums[i] = 0;
+                }
+                return nums.ToList();
             }
             catch (Exception)
             {
